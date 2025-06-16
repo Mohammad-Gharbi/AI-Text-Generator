@@ -27,7 +27,7 @@ export default function Home() {
 
       try {
         const response = await fetch("/api/gemini", {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
