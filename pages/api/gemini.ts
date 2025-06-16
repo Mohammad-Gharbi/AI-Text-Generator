@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { GoogleGenAI } from "@google/genai"
+
+const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! })
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,11 +9,12 @@ export default async function handler(
 ) {
   const { prompt } = req.body
 
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" })
+  const result = await genAI.models.generateContent({
+    model: "gemini-2.0-flash",
+    contents: prompt,
+  })
 
-  const result = await model.generateContent(prompt)
-  const text = result.response.text()
+  const text = result.text
 
   try {
     res.status(200).json({ data: { text: text } })

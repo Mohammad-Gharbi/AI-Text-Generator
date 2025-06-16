@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@google/genai": "^1.5.1",
     "@google/generative-ai": "^0.3.0",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@radix-ui/react-dropdown-menu": "^2.0.5",

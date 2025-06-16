@@ -27,7 +27,7 @@ export default function Home() {
 
       try {
         const response = await fetch("/api/gemini", {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -42,6 +42,7 @@ export default function Home() {
       }
 
       setLoading(false)
+      setInputValue("")
     } else {
       toast({
         description: "Input field can't be empty.",
